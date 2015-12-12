@@ -1,1 +1,35 @@
-This is a test text file to see if members of this group can create and edit text files from the web site interface. -CT
+Chris Troutner <chris.troutner@gmail.com>
+Attachments12:51 PM (2 minutes ago)
+
+to Bob, Lynn, Maria, Tiberius 
+Hey Bob and Lynn,
+
+The Skype call I had last night with Maria was very enlightening. It got my gears turning, and I want to get some feedback from you two before my thoughts go too far.
+
+Attached is a copy of Maria's rough-draft mock up of a potential new interface. My understanding is that you've seen this before. 
+
+While she was explaining the navigation and UX behind this mockup to me she touched on the idea that many people are not logging time to themselves or to machines - presumably because it's so difficult. Just prior to to meeting with her, I had tried to find our NRP project and figure out how to log some time. I figured it out, but it took me over twenty minutes, and I had read the through the tutorial slide deck. One of the things I like about this mock up is that it makes logging time very obvious. It makes finding the project you're working on, the people you're working with, and logging your time very easy to find and navigate. 
+
+Maria and I both feel it's important that we get some data on use cases from current users of the software. She's trying to figure out how to do surveys or other ways of collecting data. I think it's very important that we have use-case data before we make too many design decisions. However, the three areas of navigating projects, people, and ease of logging time makes so much sense, I feel like it would be low risk to start talking about design implementation of these features while we wait for more data and use cases that would include other areas of the program. In terms of creating value and improving usability, if feels like 'low hanging fruit' to me. 
+
+That being said, I have the least experience with working with the NRP than anyone. If we move forward with that proposal, I really want to get consensus and make sure that everyone agrees it's the right move. 
+
+If we do agree that focusing on something like this mock-up is a good start, then I thought we could brainstorm some ideas on the topic during a Skype session.
+
+I could create a Bootstrap based mock up that resembles this PDF pretty easily. What we need to hash out is weather we can make an API that interfaces the way that's illustrated here. For example, the mock-up is highly centric on tags. The mock-up illustrates that people would be tagged with certain skills and then a user could search for people with those skills using tags. I imagine projects would work in a similar fashion, by searching tags of people involved and possibly tags of other things.
+
+Would it be practical to implement an array of strings (tags) and attach them to each person and project in the database? Could the API feed those tags and other project information to the front end in JSON format via a GET or POST request?
+
+Another important concept that I pitched to Maria is not affecting the operation of the current state of the software. What I envision is creating a front end, Bootstrap based web page that would interact with the NRP software via API only. That way people who are used to using the NRP software the way it is now, would not be negatively affected. The new interface changes would happen separately and in parallel to the existing software. 
+
+You two have done an amazing job at creating a scalable, flexible piece of software that can work for many business types and network types. Interacting via API only would allow the core software to maintain it's flexibility and scalability, while allowing different front ends to be easily created and customized based on the needs of the business-model or network-model. It would also make it easier for others to fork the project and create their own variations of the front end software.
+
+Going back to Maria's mockup, the interface has a very different look and feel than the existing software. Using Bootstrap to ensure the mockup looks and functions as well on a cell phone as a desktop would essentially make this front end an 'app' for the existing software. The existing software could be viewed more as an 'enterprise application'. 
+
+Looking at it this way, it would be OK if the 'app' didn't have all the features of the full blown 'enterprise application'. The 'app' would be more useful for streamlining the needs of people who need to interact with the software on a daily or hourly basis. The 'enterprise application' could be utilized for less frequently used things like creating a value equation or visualizing the network. It's not as important that the 'app' does that, as long as the existing software can. It also ensure that development of the app does not have adverse effects on the existing software.
+
+Our actual implementation should be governed by use-case research and real data. However, I feel architecting the over-arching design this way would follow best practices, limit risk, and allows for rapid creation of maximum value.
+
+What are your thoughts on all this?
+-Chris Troutner
+http://ChrisTroutner.com
