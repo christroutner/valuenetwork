@@ -1,6 +1,8 @@
 valuenetwork
 =====================
 
+[![Join the chat at https://gitter.im/Sensorica/valuenetwork](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Sensorica/valuenetwork?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A prototype of Value Network Accounting, being developed in collaboration with http://www.sensorica.co/ , a pioneering value network.
 
 We mean Accounting in a large sense.  We are developing something analogous to an ERP system for value networks.  Might call it NRP for Network Resource Planning.
