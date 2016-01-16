@@ -1,5 +1,5 @@
 //Global Variables
-serverIp = "192.168.56.101";
+serverIp = "198.199.118.209";
 serverPort = "8000";
 
 // ***** BEGIN Backbone Models *****
@@ -68,7 +68,49 @@ $(document).ready( function() {
     personModel.fetch()
     //Data is now shored in personModel.attributes
     
+    debugger;
+    //Retrieve the CSRF token. See: https://docs.djangoproject.com/en/1.4/ref/contrib/csrf/#ajax
+    // using jQuery
+    function getCookie(name) {
+        var cookieValue = null;
+        debugger;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
     
+    
+    debugger;
+    //This code shows how to post to the database using JavaScript to mimic an HTML form.
+    //This will not work unless you are logged in.
+    //Create the FormData data object and append the file to it.
+    var updateForm = new FormData();
+    updateForm.append('image_upload', selectedFile); //This is the raw file that was selected
+
+    var opts = {
+      url: 'http://'+serverIp+':3000/api/imageupload/create',
+      data: newImage,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'POST',
+      success: function(data){
+        console.log('Image upload ID: ' + data.image_upload._id);
+      }
+    };
+
+    //Execute the AJAX operation.
+    jQuery.ajax(opts);
     
   }
   
