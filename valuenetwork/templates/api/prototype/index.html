@@ -148,6 +148,46 @@ https://groups.google.com/forum/#!forum/nrp-uiux-development
 	  </div>
 	 </div>
   </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <p>This form is copied from the /api/people page, supplied by Bob.</p>
+      <form action="http://192.168.56.101:8000/api/people/" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        
+        <input type='hidden' name='csrfmiddlewaretoken' value='PrzihgyY6F1CNzuWNrI9NSoefIQgOGOY' /><br>
+        
+        <label for="url" class="control-label">url:</label>
+        <input type="text" name="url" id="url" /><br>
+        
+        <label for="name" class="control-label">name:</label>
+        <input type="text" name="name" id="name" /><br>
+        
+        <label for="nick" class="control-label">ID:</label>
+        <input type="text" name="nick" id="nick" />
+        <span class="help-block">Must be unique, and no more than 32 characters</span><br>
+        
+        <label for="agent_type" class="control-label">agent type:</label>
+        <select name="agent_type" id="agent_type">
+          <option value="http://192.168.56.101:8000/api/agent-types/16/">Custodian - http://192.168.56.101:8000/api/agent-types/16/</option>
+          <option value="http://192.168.56.101:8000/api/agent-types/15/">Exchange Firm - http://192.168.56.101:8000/api/agent-types/15/</option>
+          <option value="http://192.168.56.101:8000/api/agent-types/11/">Individual - http://192.168.56.101:8000/api/agent-types/11/</option>
+          <option value="http://192.168.56.101:8000/api/agent-types/12/">Network - http://192.168.56.101:8000/api/agent-types/12/</option>
+          <option value="http://192.168.56.101:8000/api/agent-types/14/">Organization - http://192.168.56.101:8000/api/agent-types/14/</option>
+          <option value="http://192.168.56.101:8000/api/agent-types/13/">Project - http://192.168.56.101:8000/api/agent-types/13/</option>
+        </select><br>
+        
+        <label for="address" class="control-label">address:</label>
+        <input type="text" name="address" id="address" /><br>
+        
+        <label for="email" class="control-label">email address:</label>
+        <input type="text" name="email" id="email" /><br>
+        
+        <button class="btn btn-primary" title="Make a POST request on the People List resource">POST</button><br>
+        
+      </form>
+    
+    </div>
+  </div>
 </section>
 
 <br><br>

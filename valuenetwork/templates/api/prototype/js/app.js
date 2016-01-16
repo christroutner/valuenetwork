@@ -48,13 +48,28 @@ $(document).ready( function() {
 
   var debugtrue = false;
 
+  //To run this demo, open a debug console and enter 'debugtrue = true'.
   debugger;
   
+  //Prevent code from running unintentionally.
   if(debugtrue) {
+    
+    
+    //This shows how to retrieve database data using a typical jQuery AJAX GET call.
     //$.getJSON('http://'+serverIp+':'+serverPort+'/api/people/?format=json', '', function (data) {
     $.getJSON('http://'+serverIp+':'+serverPort+'/api/people', '', function (data) {
       debugger;
+      //Data is stored in local variable 'data'
     });
+    
+    //This shows how to retrieve a Model from the database using Backbone.
+    personModel = new PersonModel;
+    personModel.url = 'http://'+serverIp+':'+serverPort+'/api/people';
+    personModel.fetch()
+    //Data is now shored in personModel.attributes
+    
+    
+    
   }
   
 });
