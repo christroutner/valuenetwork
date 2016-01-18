@@ -1,6 +1,7 @@
 //Global Variables
 serverIp = "198.199.118.209";
 serverPort = "8000";
+var csrftoken; //Will host the CSRF token for POST calls.
 
 // ***** BEGIN Backbone Models *****
 var PersonModel = Backbone.Model.extend({
@@ -87,7 +88,7 @@ $(document).ready( function() {
         }
         return cookieValue;
     }
-    var csrftoken = getCookie('csrftoken');
+    csrftoken = getCookie('csrftoken');
     
     
     debugger;
