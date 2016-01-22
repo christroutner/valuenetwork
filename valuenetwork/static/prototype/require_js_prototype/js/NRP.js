@@ -116,3 +116,12 @@ $(document).ready( function() {
   }
   
 });
+
+
+//This snippet used to collapse hamburger menu on extra-small screens.
+//Source: http://bit.ly/1N1M6r4
+$(document).on('click','.navbar-collapse.in',function(e) {
+  if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+      $(this).collapse('hide');
+  }
+}); 

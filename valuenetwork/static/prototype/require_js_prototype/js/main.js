@@ -1,3 +1,5 @@
+//This is the main file used by Require.js to load all the other JavaScript and Template files.
+
 /*global require*/
 'use strict';
 
@@ -24,8 +26,18 @@ require.config({
       deps: [
         'jquery'
       ],
-      exports: 'Boostrap'
+      exports: 'Bootstrap'
     }
+    /*
+    NRP: {
+      deps: [
+        'jquery',
+        'backbone',
+        'bootstrap'
+      ],
+      exports: 'NRP'
+    }
+    */
 	},
 	paths: {
 		jquery: '../node_modules/jquery/dist/jquery',
@@ -34,19 +46,18 @@ require.config({
 		backboneLocalstorage: '../node_modules/backbone.localstorage/backbone.localStorage',
 		text: '../node_modules/requirejs-text/text',
     bootstrap: './libs/bootstrap.min'
+    //NRP: './'
 	}
 });
 
 require([
-	'backbone',
-	'views/app',
-	'routers/router'
-], function (Backbone, AppView, Workspace) {
-	/*jshint nonew:false*/
-	// Initialize routing and start Backbone.history()
-	new Workspace();
-	Backbone.history.start();
+	'jquery',
+  'backbone',
+  'bootstrap'
+], function ($,Backbone, Bootstrap) {
+	
+  $(document).ready( function() {
+    debugger;
+  });
 
-	// Initialize the application view
-	new AppView();
 });

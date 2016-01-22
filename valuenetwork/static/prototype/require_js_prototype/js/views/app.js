@@ -70,7 +70,7 @@ define([
 				this.$footer.hide();
 			}
 
-			this.allCheckbox.checked = !remaining;
+			//this.allCheckbox.checked = !remaining;
 		},
 
 		// Add a single todo item to the list by creating a view for it, and
