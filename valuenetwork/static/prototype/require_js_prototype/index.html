@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" data-framework="backbonejs">
+	<!--
+  1/9/15 Chris Troutenr - Dev Notes:
+  ----------
+  Summary: This page is a prototype proof-of-concept to show a potential interface for the NRP API.
+  It is assumed that the NRP software is hosted on a Virtual Machine (VM) that is accessible to the
+  box running this page. The Server IP and port is set in the global variables in the js/app.js file.
+  The JavaScript running this page is based on the Backbone.js Framework (backbonejs.org). If you are
+  new to backbone, CodeSchool.com has a great video-tutorial series to get you up to speed.
+
+
+  Useful Links:
+  ------------
+  The GitHub repository for this project:
+  https://github.com/Sensorica/valuenetwork
+
+  How-to Tutorial on Installing the NRP software on a VM:
+  http://christroutner.com/blog/post/open-value-networks
+
+  Gitter channel for Dev chats:
+  https://gitter.im/Sensorica/valuenetwork
+
+  Mailing list for Development of the NRP API UI/UX:
+  https://groups.google.com/forum/#!forum/nrp-uiux-development
+  -->
+  
+  <head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>People | Network Resource Planning (NRP)</title>
+    
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/NRP.css">
+    
+    <!-- 
+    This style block is used for prototyping. CSS stuff should be 
+    moved to the css/NRP.css file for long term use.
+    -->
+    <style>
+      li:hover {
+        color: blue;
+      }
+
+      .hover:hover {
+        color: blue;
+      }
+
+      .card:hover {
+        background-color: #C0C0C0;
+      }
+    </style>
+	</head>
+  
+	<body>
+    <header class='navbar navbar-default navbar-static-top'>
+      <nav class='container' role='navigation'>
+        <div class='navbar-header'>
+          <a href='index.html' class='navbar-brand'>Network Resource Planning - Sensorica</a>
+
+          <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='.navbar-collapse'>
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+
+        </div>
+
+      <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
+          <li><a href='#'>Dashboard</a></li>
+          <li><a href='#'>Projects</a></li>
+        <li><a href='#'>People</a></li>
+          <li class='dropdown'>
+            <a href='/about' data-target='#' class='dropdown-toggle' data-toggle='dropdown'>Contributions <span class='caret'></span></a>
+            <ul class='dropdown-menu' role='menu'>
+              <li><a href='#'>Labor</a></li>
+              <li><a href='#'>Resources</a></li>
+              <li class='divider'></li>
+              <li><a href='#'>Financial</a></li>
+            </ul>
+          </li>
+        <li><a href='#'>Network Activity</a></li>
+        </ul>
+      <br>
+
+
+      </nav>
+      <a href="#"><p class="pull-right" style="font-size: 18px; color: green;"><b>Log Time Now</b><span class="glyphicon glyphicon-chevron-right" style="color: green;"></span></p></a>
+    </header>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <h1>People</h1>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <form class="form-inline">
+            <div class="form-group">
+              <span class="glyphicon glyphicon-search"></span>
+              <label for="exampleInputName2" class="hidden-sm">Search Tags:</label>
+              <input type="text" class="form-control" id="exampleInputName2" placeholder="">
+              <span>(Separate tags with commas)</span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="row">
+            <div class="col-sm-11 well well-lg hidden-xs">
+              <p><u>Members Online:</u><p>
+              <ul  class="list-unstyled">
+                <li><span class="glyphicon glyphicon-user"></span> Bruce Merlo</li>
+                <li><span class="glyphicon glyphicon-user"></span> Maria Frangos</li>
+                <li><span class="glyphicon glyphicon-user"></span> Chris Troutner</li>
+              </ul>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+        </div>
+
+       <div class="col-sm-10 col-xs-12">
+        <div class="row card-row">
+
+          <div class="col-md-3 col-sm-4 col-xs-12 well well-lg card">
+
+            <p>placeholder</p>
+          </div>
+
+          <div class="col-md-1 hidden-sm hidden-xs"></div>
+
+          <div class="col-md-3 col-sm-4  col-xs-12 well well-lg card">
+            <p>placeholder</p>
+          </div>
+
+          <div class="col-md-1 hidden-sm hidden-xs"></div>
+
+          <div class="col-md-3 col-sm-4  col-xs-12 well well-lg card">
+            <p>placeholder</p>
+          </div>
+        </div>
+       </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <p><b>This form does not work.</b>It has issues with the CSRF token. It's here for reference.</p>
+          <p>This form is copied from the /api/people page, supplied by Bob.</p>
+          <form action="http://http://198.199.118.209/:8000/api/people/" method="POST" enctype="multipart/form-data" class="form-horizontal">
+
+            <input type='hidden' name='csrfmiddlewaretoken' value='PrzihgyY6F1CNzuWNrI9NSoefIQgOGOY' /><br>
+
+            <label for="url" class="control-label">url:</label>
+            <input type="text" name="url" id="url" /><br>
+
+            <label for="name" class="control-label">name:</label>
+            <input type="text" name="name" id="name" /><br>
+
+            <label for="nick" class="control-label">ID:</label>
+            <input type="text" name="nick" id="nick" />
+            <span class="help-block">Must be unique, and no more than 32 characters</span><br>
+
+            <label for="agent_type" class="control-label">agent type:</label>
+            <select name="agent_type" id="agent_type">
+              <option value="http://http://198.199.118.209/:8000/api/agent-types/16/">Custodian - http://192.168.56.101:8000/api/agent-types/16/</option>
+              <option value="http://http://198.199.118.209/:8000/api/agent-types/15/">Exchange Firm - http://192.168.56.101:8000/api/agent-types/15/</option>
+              <option value="http://http://198.199.118.209/:8000/api/agent-types/11/">Individual - http://192.168.56.101:8000/api/agent-types/11/</option>
+              <option value="http://http://198.199.118.209/:8000/api/agent-types/12/">Network - http://192.168.56.101:8000/api/agent-types/12/</option>
+              <option value="http://http://198.199.118.209/:8000/api/agent-types/14/">Organization - http://192.168.56.101:8000/api/agent-types/14/</option>
+              <option value="http://http://198.199.118.209/:8000/api/agent-types/13/">Project - http://192.168.56.101:8000/api/agent-types/13/</option>
+            </select><br>
+
+            <label for="address" class="control-label">address:</label>
+            <input type="text" name="address" id="address" /><br>
+
+            <label for="email" class="control-label">email address:</label>
+            <input type="text" name="email" id="email" /><br>
+
+            <button class="btn btn-primary" title="Make a POST request on the People List resource">POST</button><br>
+
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+    <br><br>
+
+
+
+    <div class='footer'>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-sm-4 col-md-3 col-xs-6'>
+            <h4>Ignore this Footer</h4>
+            <p><i>This footer</i> is simply a mockup</p>
+            <p><a href='#'>More About Us <i class='glyphicon glyphicon-arrow-right'></i></a></p>
+          </div>
+
+          <div class='col-sm-2 col-xs-6 col-md-offset-1'>
+            <h4>Links</h4>
+            <ul class='list-unstyled'>
+              <li><a href='#'>Home</a></li>
+              <li><a href='#'>Tickets</a></li>
+              <li><a href='#'>Stations</a></li>
+            </ul>
+          </div>
+
+          <div class='clearfix visible-xs'></div>
+
+          <div class='col-sm-2 col-xs-6'>
+            <h4>Stay in Touch</h4>
+            <ul class='list-unstyled'>
+              <li><a href='#'>About</a></li>
+              <li><a href='#'>Contact Us</a></li>
+              <li><a href='#'>Blog</a></li>
+              <li><a href='#'>Twitter</a></li>
+              <li><a href='#'>Facebook</a></li>
+            </ul>
+          </div>
+
+          <div class='col-sm-4 col-md-3 col-md-offset-1 col-xs-6'>
+            <h4>Contact Us</h4>
+            <ul class='list-unstyled'>
+              <li><i class='glyphicon glyphicon-globe'></i> Orlando, FL<li>
+              <li><i class='glyphicon glyphicon-phone'></i> 1-555-blast-off<li>
+              <li><i class='glyphicon glyphicon-envelope'></i> <a href='mailto:#'>blastingoff@codeschool.com</a><li>
+            </ul>
+
+            <p>Blasting Off With Bootstrap &copy;2214.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- This one script tag is all that is needed to include JS and Template files. -->
+		<script data-main="js/main" src="node_modules/requirejs/require.js"></script>
+	</body>
+</html>
