@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-framework="backbonejs">
+	<!--
+  1/9/15 Chris Troutenr - Dev Notes:
+  ----------
+  Summary: This page is a prototype proof-of-concept to show a potential interface for the NRP API.
+  It is assumed that the NRP software is hosted on a Virtual Machine (VM) that is accessible to the
+  box running this page. The Server IP and port is set in the global variables in the js/app.js file.
+  The JavaScript running this page is based on the Backbone.js Framework (backbonejs.org). If you are
+  new to backbone, CodeSchool.com has a great video-tutorial series to get you up to speed.
+
+
+  Useful Links:
+  ------------
+  The GitHub repository for this project:
+  https://github.com/Sensorica/valuenetwork
+
+  How-to Tutorial on Installing the NRP software on a VM:
+  http://christroutner.com/blog/post/open-value-networks
+
+  Gitter channel for Dev chats:
+  https://gitter.im/Sensorica/valuenetwork
+
+  Mailing list for Development of the NRP API UI/UX:
+  https://groups.google.com/forum/#!forum/nrp-uiux-development
+  -->
+  
+  <head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>People | Network Resource Planning (NRP)</title>
+    
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/NRP.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" href="css/skins/skin-blue.css">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- 
+    This style block is used for prototyping. CSS stuff should be 
+    moved to the css/NRP.css file for long term use.
+    -->
+    <style>
+      li:hover {
+        color: blue;
+      }
+
+      .hover:hover {
+        color: blue;
+      }
+
+      .card:hover {
+        background-color: #C0C0C0;
+      }
+    </style>
+	</head>
+  
+  <!--
+  BODY TAG OPTIONS:
+  =================
+  Apply one or more of the following classes to get the
+  desired effect
+  |---------------------------------------------------------|
+  | SKINS         | skin-blue                               |
+  |               | skin-black                              |
+  |               | skin-purple                             |
+  |               | skin-yellow                             |
+  |               | skin-red                                |
+  |               | skin-green                              |
+  |---------------------------------------------------------|
+  |LAYOUT OPTIONS | fixed                                   |
+  |               | layout-boxed                            |
+  |               | layout-top-nav                          |
+  |               | sidebar-collapse                        |
+  |               | sidebar-mini                            |
+  |---------------------------------------------------------|
+  -->
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div id="NRPApp"></div>
+  </body>
+  
+
+  <!-- This one script tag is all that is needed to include JS and Template files. -->
+  <script data-main="js/main" src="node_modules/requirejs/require.js"></script>
+</html>
+

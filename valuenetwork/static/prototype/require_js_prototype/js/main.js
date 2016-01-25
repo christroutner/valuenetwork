@@ -53,11 +53,14 @@ require.config({
 require([
 	'jquery',
   'backbone',
-  'bootstrap'
-], function ($,Backbone, Bootstrap) {
+  'bootstrap',
+  'NRP'
+], function ($,Backbone, Bootstrap, NRP) {
 	
-  $(document).ready( function() {
-    debugger;
-  });
+  //$(document).ready( function() {
+  //  debugger;
+  //});
+  
+  new NRPView();
 
 });
