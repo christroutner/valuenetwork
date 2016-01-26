@@ -7,9 +7,9 @@
 //directory.
 requirejs.config({
     baseUrl: 'js/lib',
-    paths: {
-        app: '../app'
-    },
+    //paths: {
+    //    app: '../app'
+    //},
     shim: {
         'backbone_0.9.2': {
             //deps: ['jquery_1.8.0', 'underscore_1.3.3'],

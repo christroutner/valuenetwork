@@ -1,11 +1,13 @@
 define(function (require) {
     var $ = require('jQuery-2.1.4.min'),
-        lib = require('./lib'),
-        controller = require('./controller/c1'),
-        model = require('./model/m1'),
+        //lib = require('./lib'),
+        //controller = require('./controller/c1'),
+        //model = require('./model/m1'),
         backbone = require('backbone_0.9.2'),
         underscore = require('underscore_1.3.3'),
         bootstrap = require('bootstrap.min'),
+        text = require('text'),
+        peopleLeftMenu = require('../app/views/peopleLeftMenu'),
         adminlte = require('adminlte');
 
     //A fabricated API to show interaction of
