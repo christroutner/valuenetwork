@@ -761,6 +761,9 @@ class EconomicAgent(models.Model):
         agent_ids = self.has_associates.filter(association_type__association_behavior="member").filter(state="active").values_list('is_associate')
         return EconomicAgent.objects.filter(pk__in=agent_ids)
         
+    def individual_members(self):
+        return self.members().filter(agent_type__party_type="individual")
+        
     #def affiliates(self):
     #    #import pdb; pdb.set_trace()
     #    agent_ids = self.has_associates.filter(association_type__identifier="affiliate").filter(state="active").values_list('is_associate')
@@ -2542,7 +2545,8 @@ class ProcessPattern(models.Model):
             for res in rt_resources:
                 resources.append(res)
         resource_ids = [res.id for res in resources]
-        return EconomicResource.objects.filter(id__in=resource_ids).order_by("-created_date")
+        oh = EconomicResource.objects.onhand()
+        return oh.filter(id__in=resource_ids).order_by("-created_date")
                 
     def material_contr_resource_types(self):
         return self.resource_types_for_relationship("resource")
@@ -4710,6 +4714,7 @@ class EconomicResource(models.Model):
         
     def purchase_events_for_exchange_stage(self):
         #todo dhen_bug:
+        #import pdb; pdb.set_trace()
         if self.exchange_stage:
             return self.purchase_events().filter(exchange_stage=self.exchange_stage)
         else:

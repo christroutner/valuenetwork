@@ -23,9 +23,11 @@ class EconomicAgentSerializer(serializers.HyperlinkedModelSerializer):
         
 class ContextSerializer(serializers.HyperlinkedModelSerializer):
     agent_type = serializers.RelatedField()
+    affiliates = EconomicAgentSerializer(source='individual_members',
+        many=True, read_only=True)
     class Meta:
         model = EconomicAgent
-        fields = ('api_url', 'url', 'name', 'slug', 'agent_type', 'address',)
+        fields = ('api_url', 'url', 'name', 'slug', 'agent_type', 'address', 'affiliates')
         
         
 class AgentTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -60,6 +62,27 @@ class EconomicEventSerializer(serializers.HyperlinkedModelSerializer):
             'unit_of_quantity',
             'is_contribution',
             )
+        
+class ContributionSerializer(serializers.HyperlinkedModelSerializer):
+    unit_of_quantity = serializers.RelatedField()
+    class Meta:
+        model = EconomicEvent
+        fields = ('api_url', 
+            'event_date', 
+            'event_type', 
+            'from_agent', 
+            'to_agent',
+            'context_agent',
+            'resource_type',
+            'resource',
+            # todo: add process serializer to add process field here
+            #'process',
+            'description',
+            'quantity',
+            'unit_of_quantity',
+            'is_contribution',
+            )
+
         
 class EventTypeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
