@@ -1,29 +1,55 @@
-define(function (require) {
-    var $ = require('jQuery-2.1.4.min'),
-        //lib = require('./lib'),
-        //controller = require('./controller/c1'),
-        //model = require('./model/m1'),
-        backbone = require('backbone_0.9.2'),
-        underscore = require('underscore_1.3.3'),
-        bootstrap = require('bootstrap.min'),
-        text = require('text'),
-        peopleLeftMenu = require('../app/views/peopleLeftMenu'),
-        adminlte = require('adminlte');
+define([
+	'jQuery-2.1.4.min',
+	'underscore_1.3.3',
+	'backbone_0.9.2',
+  'bootstrap.min',
+	'../app/views/peopleLeftMenu',
+  '../app/views/personCard',
+  '../app/views/peopleList',
+  'adminlte'
+], function ($, _, Backbone, Bootstrap, PeopleLeftMenu, PersonCardView, PeopleListView, AdminLTE) {
 
-    //A fabricated API to show interaction of
-    //common and specific pieces.
-    //controller.setModel(model);
-    $(function () {
-      
-      debugger;
-      
-        /*
-        controller.render(lib.getBody());
+  //Global Variables
+  serverIp = "198.199.118.209";
+  serverPort = "8000";
+  var csrftoken = ""; //Will host the CSRF token for POST calls.
+  
+  
+  debugger;
 
-        //Display backbone and underscore versions
-        $('body')
-            .append('<div>backbone version: ' + backbone.VERSION + '</div>')
-            .append('<div>underscore version: ' + underscore.VERSION + '</div>');
-        */
-    });
+  //tempModel is used to retrieve/upload/sync data from the NRP server
+  //Data other than just the models are uploaded, which is why my models and view configuration
+  //is nested insite NRPPeopleModel.
+  var NRPPeopleModel = Backbone.Model.extend({
+    initialize: function() {
+      this.on('change', function(){
+          
+          //Create a new collection based on the data retrieved from the NRP.
+          var PersonModel = Backbone.Model.extend({});
+          var PeopleCollection = Backbone.Collection.extend({ model: PersonModel });
+          peopleCollection = new PeopleCollection(nrpPeopleModel.attributes.results); //no 'var', which makes this a global variable.
+        
+          //Initialize the List of People
+          var peopleListView = new PeopleListView({collection: peopleCollection});
+          peopleListView.render();
+        
+          
+        
+          debugger;
+      });
+    }
+  });
+  var nrpPeopleModel = new NRPPeopleModel;
+  nrpPeopleModel.url = 'http://'+serverIp+':'+serverPort+'/api/people';
+  nrpPeopleModel.fetch();
+  //Data is now shored in nrpPeopleModel.attributes.results[]
+  
+  
+  var peopleLeftMenuView = new PeopleLeftMenu();
+  peopleLeftMenuView.render();
+
+  //var personCardView = new PersonCardView({model: peopleCollection.models[0]});
+  //personCardView.render();
+  
+        
 });
