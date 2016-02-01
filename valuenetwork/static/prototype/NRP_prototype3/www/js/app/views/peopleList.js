@@ -43,12 +43,29 @@ define([
 
       debugger;
       
-      this.collection.forEach( function(model) {
+      var i = 0; //used to track each column.
+      var j = 0; //used to traack each row.
+      this.collection.models.forEach( function(model) { //Loop through each model
         debugger;
-        var personCardView = new PersonCardView({model: model});
-        personCardView.render();
         
-      });
+        
+        if( i == 0 ) {
+          //Clone the row provided in people.html.
+          this.peopleRow = $(this.$el.find('.peopleRow').clone()[0]);        
+        }
+        
+        
+        var personCardView = new PersonCardView({model: model});
+        personCardView.render(this.peopleRow.find('.personCard')[i]);
+        i++;
+        
+        if( i == 3 ) {
+          i = 0;
+          this.peopleRow.show();
+          this.$el.append(this.peopleRow);
+        }
+        
+      }, this);
       
       
 			//this.toggleVisible();

@@ -35,12 +35,19 @@ define([
 		},
 
 		// Re-render the titles of the todo item.
-		render: function () {
-			//this.$el.html(this.template(this.model.toJSON()));
+		render: function (target) {
+			debugger;
+      
+      this.$el = $(target);
+      
+      
+      //this.$el.html(this.template(this.model.toJSON()));
       this.$el.html(this.template);
 			//this.$el.toggleClass('completed', this.model.get('completed'));
 
-      debugger;
+      this.$el.find('h4').text(this.model.get('name'));
+      
+      
       
 			//this.toggleVisible();
 			//this.$input = this.$('.edit');
