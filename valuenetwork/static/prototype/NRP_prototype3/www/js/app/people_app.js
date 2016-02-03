@@ -15,7 +15,7 @@ define([
   var csrftoken = ""; //Will host the CSRF token for POST calls.
   
   
-  debugger;
+  //debugger;
 
   //tempModel is used to retrieve/upload/sync data from the NRP server
   //Data other than just the models are uploaded, which is why my models and view configuration
@@ -35,7 +35,7 @@ define([
         
           
         
-          debugger;
+          //debugger;
       });
     }
   });

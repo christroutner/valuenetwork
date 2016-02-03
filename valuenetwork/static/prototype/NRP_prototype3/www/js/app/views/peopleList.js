@@ -41,12 +41,12 @@ define([
       //this.$el.html(this.template);
 			//this.$el.toggleClass('completed', this.model.get('completed'));
 
-      debugger;
+      //debugger;
       
       var i = 0; //used to track each column.
       var j = 0; //used to traack each row.
       this.collection.models.forEach( function(model) { //Loop through each model
-        debugger;
+        //debugger;
         
         
         if( i == 0 ) {

@@ -36,7 +36,7 @@ define([
 
 		// Re-render the titles of the todo item.
 		render: function (target) {
-			debugger;
+			//debugger;
       
       this.$el = $(target);
       
@@ -46,8 +46,35 @@ define([
 			//this.$el.toggleClass('completed', this.model.get('completed'));
 
       this.$el.find('h4').text(this.model.get('name'));
+      this.$el.find('#address').text("Location: "+this.model.get('address'));
+      this.$el.find('#email').text("Email: "+this.model.get('email'));
       
+      //debugger;
       
+      var projects = this.model.get('projects');
+      var btnCnt = 0; //Used to track which button in the row we're focused on.
+      //Duplicate the projects row from the template
+      var projectRow = this.$el.find('.project-row').clone();
+      for( var i = 0; i < projects.length; i++ ) {
+        
+        //Change the text of the button in the person card to match the name of the project.
+        $(projectRow.find('.btn')[btnCnt]).text(projects[i].name);
+        
+        btnCnt++;
+        if(btnCnt == 2) {
+          btnCnt = 0;
+          
+          this.$el.append(projectRow);
+          projectRow = $(this.$el.find('.project-row')[0]).clone(); //Reclone the first project-row
+        }
+        
+      }
+      this.$el.append(projectRow); //Append the last row I was working on.
+      debugger;
+      
+      //Show all the rows
+      this.$el.find('.project-row').show();
+      $(this.$el.find('.project-row')[0]).hide(); //But hide the first one, which was our template.
       
 			//this.toggleVisible();
 			//this.$input = this.$('.edit');
