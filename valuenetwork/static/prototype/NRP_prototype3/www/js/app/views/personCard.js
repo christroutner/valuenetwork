@@ -34,43 +34,72 @@ define([
 			//this.listenTo(this.model, 'visible', this.toggleVisible);
 		},
 
-		// Re-render the titles of the todo item.
+		// Render each person card.
 		render: function (target) {
 			//debugger;
       
+      //Assign the view to the passed in target.
       this.$el = $(target);
       
-      
+
+      //Render the template for the PersonCard.
       //this.$el.html(this.template(this.model.toJSON()));
       this.$el.html(this.template);
 			//this.$el.toggleClass('completed', this.model.get('completed'));
 
+      //Customize the card with details from the database.
       this.$el.find('h4').text(this.model.get('name'));
       this.$el.find('#address').text("Location: "+this.model.get('address'));
       this.$el.find('#email').text("Email: "+this.model.get('email'));
       
       //debugger;
       
+      //Populate the card with a button for each project associated with this person.
       var projects = this.model.get('projects');
-      var btnCnt = 0; //Used to track which button in the row we're focused on.
-      //Duplicate the projects row from the template
-      var projectRow = this.$el.find('.project-row').clone();
+      var btnCnt = 0; //Used to track which button in the row we're focused on.      
+      
+
+      var projectRow = this.$el.find('.project-row').clone(); //Duplicate the projects row from the template
       for( var i = 0; i < projects.length; i++ ) {
+        //debugger;
         
         //Change the text of the button in the person card to match the name of the project.
-        $(projectRow.find('.btn')[btnCnt]).text(projects[i].name);
-        
+        if( projects[i].name.length < 16 ) {
+          $(projectRow.find('.btn')[btnCnt]).text(projects[i].name);
+        //Cut off the project name and append '...' if it's too long.
+        } else {
+          $(projectRow.find('.btn')[btnCnt]).text(projects[i].name.slice(0,16)+'...');
+        }
+
         btnCnt++;
+        
+        
         if(btnCnt == 2) {
           btnCnt = 0;
           
           this.$el.append(projectRow);
           projectRow = $(this.$el.find('.project-row')[0]).clone(); //Reclone the first project-row
         }
-        
+
       }
-      this.$el.append(projectRow); //Append the last row I was working on.
-      debugger;
+      //debugger;
+      
+      //Remove the second button if there was no project to fill in its text.
+      if( projectRow.find('.btn').last().text() == "" ) {
+        projectRow.find('.btn').last().remove();
+      }
+      
+      //Only post the last row of buttons if the first button has some text.
+      if( projectRow.find('.btn').first().text() != "" ) {
+        this.$el.append(projectRow); //Append the last row I was working on.  
+      }
+      
+      //Append 'None' if no projects are associated with this person.
+      if( projects.length == 0 ) {
+        this.$el.append('<p><b>None</b></p>');
+      }
+      
+      //debugger;
       
       //Show all the rows
       this.$el.find('.project-row').show();

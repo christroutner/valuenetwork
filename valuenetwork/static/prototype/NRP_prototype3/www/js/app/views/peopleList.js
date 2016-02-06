@@ -34,8 +34,7 @@ define([
 			//this.listenTo(this.model, 'visible', this.toggleVisible);
 		},
 
-		// Re-render the titles of the todo item.
-		
+		// Render all the person cards and populate the List		
     render: function () {
 			//this.$el.html(this.template(this.model.toJSON()));
       //this.$el.html(this.template);
@@ -56,6 +55,7 @@ define([
         
         
         var personCardView = new PersonCardView({model: model});
+        //Call personCardView.render() and pass the current person card.
         personCardView.render(this.peopleRow.find('.personCard')[i]);
         i++;
         

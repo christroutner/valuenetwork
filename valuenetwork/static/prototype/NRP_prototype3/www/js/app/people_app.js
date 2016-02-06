@@ -10,9 +10,10 @@ define([
 ], function ($, _, Backbone, Bootstrap, PeopleLeftMenu, PersonCardView, PeopleListView, AdminLTE) {
 
   //Global Variables
-  serverIp = "198.199.118.209";
-  serverPort = "8000";
-  var csrftoken = ""; //Will host the CSRF token for POST calls.
+  global = new Object(); //Creates a global variables. All global variables in this program are properties of this variable.
+  global.serverIp = "198.199.118.209";
+  global.serverPort = "8000";
+  //var csrftoken = ""; //Will host the CSRF token for POST calls.
   
   
   //debugger;
@@ -23,7 +24,7 @@ define([
   var NRPPeopleModel = Backbone.Model.extend({
     initialize: function() {
       this.on('change', function(){
-          
+          //debugger;
           //Create a new collection based on the data retrieved from the NRP.
           var PersonModel = Backbone.Model.extend({});
           var PeopleCollection = Backbone.Collection.extend({ model: PersonModel });
@@ -39,9 +40,11 @@ define([
       });
     }
   });
+  
   var nrpPeopleModel = new NRPPeopleModel;
-  nrpPeopleModel.url = 'http://'+serverIp+':'+serverPort+'/api/people';
+  nrpPeopleModel.url = 'http://'+global.serverIp+':'+global.serverPort+'/api/people';
   nrpPeopleModel.fetch();
+  
   //Data is now shored in nrpPeopleModel.attributes.results[]
   
   
