@@ -40,7 +40,26 @@ define([
       //this.$el.html(this.template);
 			//this.$el.toggleClass('completed', this.model.get('completed'));
 
-      //debugger;
+      debugger;
+      
+      //if( this.collection.previous == null ) {
+      //  $('#peoplePrevLink').html('Prev');
+      //} else {
+      //  $('#peoplePrevLink').html('<a href="#/" onclick="global.peopleListView.loadResults(\''+this.collection.previous+'\')">Prev</a>');
+      //}
+      
+      //if( this.collection.next == null ) {
+      //  $('#peopleNextLink').html('Next');
+      //} else {
+      //  $('#peopleNextLink').html('<a href="#/" onclick="global.peopleListView.loadResults(\''+this.collection.next+'\')">Next</a>');
+      //}
+      
+      if( this.collection.next == null ) {
+        $('#peopleMoreLink').html('No More Entries to Display');
+      } else {
+        $('#peopleMoreLink').html('<a href="#/" onclick="global.peopleListView.loadResults(\''+this.collection.next+'\')">More</a>');
+      }
+      
       
       var i = 0; //used to track each column.
       var j = 0; //used to traack each row.
@@ -59,7 +78,7 @@ define([
         personCardView.render(this.peopleRow.find('.personCard')[i]);
         i++;
         
-        if( i == 3 ) {
+        if( i == 2 ) {
           i = 0;
           this.peopleRow.show();
           this.$el.append(this.peopleRow);
@@ -68,10 +87,18 @@ define([
       }, this);
       
       
+      
 			//this.toggleVisible();
 			//this.$input = this.$('.edit');
 			return this;
-		}
+		},
+    
+    loadResults: function(URL) {
+      debugger;
+      
+      this.collection.url = URL;
+      this.collection.fetch();
+    }
     
 
 		/*

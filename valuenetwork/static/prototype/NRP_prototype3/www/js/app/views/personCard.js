@@ -64,7 +64,7 @@ define([
         //debugger;
         
         //Change the text of the button in the person card to match the name of the project.
-        if( projects[i].name.length < 16 ) {
+        if( projects[i].name.length < 10 ) {
           $(projectRow.find('.btn')[btnCnt]).text(projects[i].name);
         //Cut off the project name and append '...' if it's too long.
         } else {
