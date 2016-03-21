@@ -1,3 +1,6 @@
+## Fork 03/21/16 CT
+I forked this so that I have a copy of an unchanging version of the software. I plan to use this fork as a test-bed for my own business ideas.
+
 valuenetwork
 =====================
 
