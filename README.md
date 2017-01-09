@@ -1,3 +1,7 @@
+## Update 1/9/17
+
+This repository is a fork of the original valnet NRP. I've since taken the ideas in this software and incorporated them into [this plugin](https://github.com/christroutner/rpiovn) for [ConnextCMS](http://connextcms.com) and put them into practice with the Raspberry Pi Open Value Network ([RPiOVN](http://rpiovn.com)). If you want to check out the back end of this new software, [sign up for an account on RPiOVN](http://rpiovn.org/createaccount).
+
 ## Fork 03/21/16 CT
 I forked this so that I have a copy of an unchanging version of the software. I plan to use this fork as a test-bed for my own business ideas.
 
